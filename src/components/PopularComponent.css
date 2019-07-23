@@ -1,0 +1,18 @@
+.blogs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .main-page {
+    margin-bottom: 5rem;
+  }
+  .position{
+    text-align: center !important;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+    background-color: black;
+    color: white;
+    width: 100%;
+  }
