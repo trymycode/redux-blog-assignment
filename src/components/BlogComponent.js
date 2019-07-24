@@ -12,9 +12,6 @@ export default class BlogComponent extends React.Component {
   }
 
   cardStyle = { width: "18rem" };
-  displayDetails = () => {
-    console.log("displayDetails is called", this.state.selectedId);
-  };
 
   addLike = () => {
     console.log("props", this.props.data.likes);
@@ -25,17 +22,14 @@ export default class BlogComponent extends React.Component {
 
   render() {
     console.log("Blog id", this.props.data.id);
-    let { title, description, author, image, date, tags } = this.props.data;
-    let shortDescription = description.toString().substring(0, 50);
+    let { title, author, image, date, tags } = this.props.data;
+    let shortDescription = this.props.data.description
+      .toString()
+      .substring(0, 50);
     return (
       <div className="card" style={this.cardStyle}>
         <Link to={"/details/" + this.props.data.id}>
-          <img
-            src={image}
-            className="card-img-top"
-            alt={title}
-            onClick={this.displayDetails}
-          />
+          <img src={image} className="card-img-top" alt={title} />
         </Link>
         <div className="card-body">
           <Link to={"/details/" + this.props.data.id}>
@@ -46,10 +40,12 @@ export default class BlogComponent extends React.Component {
               {tag}
             </span>
           ))}
-          <h6 className="text-muted">
-            {author} | <small>{new Date(date).toLocaleString()}</small>
-          </h6>
+
           <p className="card-text">{shortDescription}...</p>
+          <h6 className="text-muted">
+            {author} | {""}
+            <small>{new Date(date).toLocaleString()}</small>
+          </h6>
           <button className="btn btn-primary" onClick={() => this.addLike()}>
             Like
           </button>

@@ -27,8 +27,8 @@ class CreateComponent extends Component {
     console.log("onsubmit is called");
     this.createBlog(
       this.state.title,
-      this.state.description,
       this.state.author,
+      this.state.description,
       this.state.tags,
       this.state.image,
       this.state.published
