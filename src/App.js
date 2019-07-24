@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { connect } from "react-redux";
-import { fetchPosts, createPost } from "../src/actions/postActions";
+import { fetchPosts} from "../src/actions/postActions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CreateComponent from "./components/CreateComponent";
 import HomeComponent from "./components/HomeComponent";
@@ -62,5 +62,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { fetchPosts, createPost }
+  { fetchPosts }
 )(App);

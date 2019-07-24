@@ -19,7 +19,7 @@ class PopularComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      descendingBlogs: this.props.blogs.sort(this.compare)
+      descendingBlogs: [...this.props.blogs].sort(this.compare)
     };
   }
 

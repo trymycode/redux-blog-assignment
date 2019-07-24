@@ -1,4 +1,4 @@
-import { FETCH_POST, CREATE_POST, MOST_POPULAR_POST } from "../actions/types";
+import { FETCH_POST, CREATE_POST } from "../actions/types";
 
 const initialState = {
   blogs: [],
@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
       console.log("postReducer/create_post is called");
       return {
         ...state,
-        blog: action.payload
+        blogs: action.payload
       };
     default:
       return state;

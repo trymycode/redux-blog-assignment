@@ -3,6 +3,7 @@ import "./CreateComponent.css";
 import { createPost } from "../actions/postActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
 class CreateComponent extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +46,16 @@ class CreateComponent extends Component {
 
     // call action
     this.props.createPost(newBlog);
+    // Redirect the page to home page
+    this.props.history.push("/");
+
+    this.setState({
+      title: "",
+      description: "",
+      tags: [],
+      author: "",
+      image: ""
+    });
   };
   render() {
     return (
