@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./CreateComponent.css";
-import { createPost } from "../actions/postActions";
+import { createPost, createdPost } from "../actions/postActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -46,16 +46,10 @@ class CreateComponent extends Component {
 
     // call action
     this.props.createPost(newBlog);
+    // clear the form after creating  the form
+    this.props.createdPost();
     // Redirect the page to home page
     this.props.history.push("/");
-
-    this.setState({
-      title: "",
-      description: "",
-      tags: [],
-      author: "",
-      image: ""
-    });
   };
   render() {
     return (
@@ -136,9 +130,10 @@ class CreateComponent extends Component {
   }
 }
 CreateComponent.propTypes = {
-  createPost: PropTypes.func.isRequired
+  createPost: PropTypes.func.isRequired,
+  createdPost: PropTypes.func.isRequired
 };
 export default connect(
   null,
-  { createPost }
+  { createPost, createdPost }
 )(CreateComponent);
