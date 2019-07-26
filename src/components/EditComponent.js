@@ -3,60 +3,89 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createPost } from "../actions/postActions";
 import { withRouter } from "react-router-dom";
+
+  
 class EditComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blogDetails: null
+      blogDetails: null,
+      title :"",
+      author : "",
+      description : "",
+      tags :[""],
+      image: ""
+ 
     };
   }
 
+  // blogDetails = this.props.blogs.filter(
+  //   blog => blog.id === Number(this.props.match.params.id)
+  //   );
+  // items.forEach(function(item){
+  //   copy.push(item*item);
+  // });
   componentDidMount() {
-    const blogDetails = this.props.blogs.filter(
-      blog => blog.id === Number(this.props.match.params.id)
-    );
+    const id = parseInt(this.props.match.params.id,10);
+    let filteredBlog = null;
+    this.props.blogs.forEach(function(blog) {
+      if (blog.id === id) {
+       filteredBlog = blog
+       
+      } else {
+        console.log("checking");
+      }
+    })
+if(filteredBlog!=null)
+   {
     this.setState({
-      blogDetails: blogDetails[0]
-    });
+      title: filteredBlog.title,
+      author: filteredBlog.author,
+      description: filteredBlog.description,
+      tags: filteredBlog.tags,
+      image: filteredBlog.image
+    })
+   }
   }
 
-  onChange = e => {
+ 
+  // onSubmit = e => {
+  //   e.preventDefault();
+  //   console.log("onsubmit is called");
+  //   console.log("changed values are", this.state);
+  //   this.editBlog(
+  //     this.state.title,
+  //     this.state.author,
+  //     this.state.description,
+  //     this.state.tags,
+  //     this.state.image,
+  //     this.state.published
+  //   );
+  // };
+  // editBlog = (title, author, description, tags, image, published) => {
+  //   const newBlog = {
+  //     title: title,
+  //     author: author,
+  //     description: description,
+  //     tags: [tags],
+  //     id: Number(this.props.match.params.id),
+  //     image: image,
+  //     published: published
+  //   };
+  //   this.props.createPost(newBlog);
+  // };
+  onFieldChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-  onSubmit = e => {
-    e.preventDefault();
-    console.log("onsubmit is called");
-    console.log("changed values are", this.state);
-    this.editBlog(
-      this.state.title,
-      this.state.author,
-      this.state.description,
-      this.state.tags,
-      this.state.image,
-      this.state.published
-    );
-  };
-  editBlog = (title, author, description, tags, image, published) => {
-    const newBlog = {
-      title: title,
-      author: author,
-      description: description,
-      tags: [tags],
-      id: Number(this.props.match.params.id),
-      image: image,
-      published: published
-    };
-    this.props.createPost(newBlog);
-  };
   render() {
-    console.log(this.state.blogDetails);
-    if (this.state.blogDetails != null) {
+    console.log("props", this.props);
+    // if (this.state.title != null) {
       return (
         <div>
-          {/* {this.state.blogDetails[0].author!==""?<div>{this.state.blogDetails[0].author}</div>:<div>""</div>} */}
-          <div className="position">Edit</div>
+    
+    <div className="position">Edit</div>
           <div className="container">
             <form onSubmit={this.onSubmit} className="text-center">
               <div className="form-group row">
@@ -67,8 +96,8 @@ class EditComponent extends Component {
                     className="form-control rounded border border-secondary"
                     name="title"
                     placeholder="Title"
-                    // value={this.state.blogDetails.title}
-                    onChange={this.onChange}
+                    value={this.state.title}
+                    onChange={this.onFieldChange}
                   />
                 </div>
               </div>
@@ -80,8 +109,7 @@ class EditComponent extends Component {
                     rows="3"
                     name="description"
                     placeholder="Description"
-                    // value={this.state.blogDetails.description}
-                    onChange={this.onChange}
+                    onChange={this.onFieldChange}
                   />
                 </div>
               </div>
@@ -93,8 +121,8 @@ class EditComponent extends Component {
                     className="form-control rounded border border-secondary"
                     name="tags"
                     placeholder="Category/Tags"
-                    // value={this.state.blogDetails.tags}
-                    onChange={this.onChange}
+                    value={this.state.tags}
+                    onChange={this.onFieldChange}
                   />
                 </div>
               </div>
@@ -106,8 +134,8 @@ class EditComponent extends Component {
                     className="form-control rounded border border-secondary"
                     name="author"
                     placeholder="Author"
-                    // value={this.state.blogDetails.author}
-                    onChange={this.onChange}
+                    value={this.state.author}
+                    onChange={this.onFieldChange}
                   />
                 </div>
               </div>
@@ -119,8 +147,8 @@ class EditComponent extends Component {
                     className="form-control rounded border border-secondary"
                     name="image"
                     placeholder="Image URL Only"
-                    // value={this.state.blogDetails.image}
-                    onChange={this.onChange}
+                    value={this.state.image}
+                    onChange={this.onFieldChange}
                   />
                 </div>
               </div>
@@ -133,10 +161,9 @@ class EditComponent extends Component {
           </div>
         </div>
       );
-    } else {
-      return <div>Loading...</div>;
-    }
-    // console.log("Recent state in edit component", this.state.blogDetails.author);
+    // } else {
+    //   return <div>Loading...</div>;
+    // }
   }
 }
 EditComponent.propTypes = {
