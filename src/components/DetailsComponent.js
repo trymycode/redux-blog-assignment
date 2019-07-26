@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 class DetailsComponent extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,8 @@ class DetailsComponent extends Component {
           published: false,
           description: "",
           image: "",
-          date: ""
+          date: "",
+          id: 0
         }
       ]
     };
@@ -22,10 +24,11 @@ class DetailsComponent extends Component {
     axios.get(`http://test.peppersquare.com/api/v1/article`).then(res => {
       this.setState({
         blogDetails: res.data.filter(
+          // console.log(this.props.match.params.id),
           blog => blog.id === Number(this.props.match.params.id)
         )
       });
-      console.log(this.state.blogDetails[0]);
+      // console.log(this.state.blogDetails[0]);
     });
   }
 
@@ -65,7 +68,13 @@ class DetailsComponent extends Component {
               <p className="card-text">
                 {this.state.blogDetails[0].description}
               </p>
-              <button className="btn btn-primary">Like</button>
+              <div className="row">
+                {/* /details/:id/edit */}
+                <button className="btn btn-primary mr-2">Like</button>
+                <Link to={`/details/${this.state.blogDetails[0].id}/edit`}>
+                  <button className="btn btn-primary">Edit</button>
+                </Link>
+              </div>
               <div className="float-right text-muted">
                 <span className="heart">&#10084;</span>{" "}
                 {this.state.blogDetails[0].likes} likes

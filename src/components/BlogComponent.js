@@ -27,30 +27,32 @@ export default class BlogComponent extends React.Component {
       .toString()
       .substring(0, 50);
     return (
-      <div className="card" style={this.cardStyle}>
-        <Link to={"/details/" + this.props.data.id}>
-          <img src={image} className="card-img-top" alt={title} />
-        </Link>
-        <div className="card-body">
+      <div className="col-lg-3 col-md-6 col-sm-12">
+        <div className="card m-2" style={{ width: "16rem" }}>
           <Link to={"/details/" + this.props.data.id}>
-            <h5 className="card-title">{title}</h5>
+            <img src={image} className="card-img-top" alt={title} />
           </Link>
-          {tags.map((tag, index) => (
-            <span className="badge badge-warning" key={index}>
-              {tag}
-            </span>
-          ))}
+          <div className="card-body">
+            <Link to={"/details/" + this.props.data.id}>
+              <h5 className="card-title">{title}</h5>
+            </Link>
+            {tags.map((tag, index) => (
+              <span className="badge badge-warning" key={index}>
+                {tag}
+              </span>
+            ))}
 
-          <p className="card-text">{shortDescription}...</p>
-          <h6 className="text-muted">
-            {author} | {""}
-            <small>{new Date(date).toLocaleString()}</small>
-          </h6>
-          <button className="btn btn-primary" onClick={() => this.addLike()}>
-            Like
-          </button>
-          <div className="float-right text-muted">
-            <span className="heart">&#10084;</span> {this.state.likes} likes
+            <p className="card-text">{shortDescription}...</p>
+            <h6 className="text-muted">
+              {author} | {""}
+              <small>{new Date(date).toLocaleString()}</small>
+            </h6>
+            <button className="btn btn-primary" onClick={() => this.addLike()}>
+              Like
+            </button>
+            <div className="float-right text-muted">
+              <span className="heart">&#10084;</span> {this.state.likes} likes
+            </div>
           </div>
         </div>
       </div>
