@@ -1,7 +1,7 @@
-import { FETCH_POST, CREATE_POST, CREATED_POST } from "./types";
+import { FETCH_POST, CREATE_POST, CREATED_POST, EDIT_POST } from "./types";
 import axios from "axios";
 export const fetchPosts = () => dispatch => {
-  console.log("fetchpost action is called");
+  // console.log("fetchpost action is called");
   axios
     .get(`http://test.peppersquare.com/api/v1/article`)
     .then(res => res.data)
@@ -14,7 +14,7 @@ export const fetchPosts = () => dispatch => {
 };
 
 export const createPost = newBlog => dispatch => {
-  console.log("createpost action is called");
+  // console.log("createpost action is called");
   axios
     .post("http://test.peppersquare.com/api/v1/article", newBlog)
     .then(() =>
@@ -32,6 +32,18 @@ export const createPost = newBlog => dispatch => {
 
     .catch(err => console.log("error", err));
 };
+
+export const editPost = (editedBlog) => dispatch =>{
+  // console.log("editPost action is called");
+  axios.post("http://test.peppersquare.com/api/v1/article", editedBlog)
+  .then(blog => blog.data)
+  .then(blog => dispatch({
+    type: EDIT_POST,
+    payload: blog
+  }))
+ 
+  .catch(err => console.log("Error", err))
+}
 
 export const createdPost = () => {
   return {
