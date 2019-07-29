@@ -31,7 +31,7 @@ class EditComponent extends Component {
       if (blog.id === id) {
         filteredBlog = blog;
       } else {
-        console.log("checking");
+        // console.log("checking");
       }
     });
     if (filteredBlog != null) {
@@ -47,8 +47,8 @@ class EditComponent extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("onsubmit is called");
-    console.log("changed values are", this.state);
+    // console.log("onsubmit is called");
+    // console.log("changed values are", this.state);
     this.editBlog(
       this.state.title,
       this.state.author,
@@ -80,7 +80,7 @@ class EditComponent extends Component {
     });
   };
   render() {
-    console.log("props", this.props);
+    // console.log("props", this.props);
     // if (this.state.title != null) {
     return (
       <div>

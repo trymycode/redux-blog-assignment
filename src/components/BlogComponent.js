@@ -21,7 +21,7 @@ export default class BlogComponent extends React.Component {
   };
 
   render() {
-    console.log("Blog id", this.props.data.id);
+    // console.log("Blog id", this.props.data.id);
     let { title, author, image, date, tags } = this.props.data;
     let shortDescription = this.props.data.description
       .toString()
@@ -34,7 +34,7 @@ export default class BlogComponent extends React.Component {
           </Link>
           <div className="card-body">
             <Link to={"/details/" + this.props.data.id}>
-              <h5 className="card-title">{title}</h5>
+              <h5 className="card-title text-info">{title}</h5>
             </Link>
             {tags.map((tag, index) => (
               <span className="badge badge-warning" key={index}>
@@ -47,7 +47,7 @@ export default class BlogComponent extends React.Component {
               {author} | {""}
               <small>{new Date(date).toLocaleString()}</small>
             </h6>
-            <button className="btn btn-primary" onClick={() => this.addLike()}>
+            <button className="btn btn-info" onClick={() => this.addLike()}>
               Like
             </button>
             <div className="float-right text-muted">
