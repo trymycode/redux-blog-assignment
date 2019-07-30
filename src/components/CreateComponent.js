@@ -3,126 +3,110 @@ import "./CreateComponent.css";
 import { createPost, createdPost } from "../actions/postActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Field, Form, actions } from "react-redux-form";
 
 class CreateComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: "",
-      description: "",
-      tags: [],
-      author: "",
-      image: "",
-      published: true
-    };
+    // this.state = {
+    //   title: "",
+    //   description: "",
+    //   tags: [],
+    //   author: "",
+    //   image: "",
+    //   published: true
+    // };
   }
-  onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  // onChange = e => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
+  handleSubmit(user) {
+    // let { dispatch } = this.props;
+    
+    let obj = {...user,tags:[user.tags], published:true};
 
-  onSubmit = e => {
-    e.preventDefault();
-    console.log("onsubmit is called");
-    this.createBlog(
-      this.state.title,
-      this.state.author,
-      this.state.description,
-      this.state.tags,
-      this.state.image,
-      this.state.published
-    );
-  };
-  createBlog = (title, author, description, tags, image, published) => {
-    const newBlog = {
-      title: title,
-      author: author,
-      description: description,
-      tags: [tags],
-      image: image,
-      published: published
-    };
-
-    // call action
-    this.props.createPost(newBlog);
-    // clear the form after creating  the form
-    this.props.createdPost();
+    console.log("handleSubmit method is called", obj);
+    //  call action
+    this.props.createPost(obj);
+     // clear the form after creating  the form
+    // this.props.createdPost();
     // Redirect the page to home page
     this.props.history.push("/");
-  };
+}
   render() {
+    let { user } = this.props;
+
     return (
       <div>
         <div className="position">Create</div>
         <div className="container">
-          <form onSubmit={this.onSubmit} className="text-center">
+          <Form
+            model="user"
+            onSubmit={user => this.handleSubmit(user)}
+            className="text-center"
+          >
             <div className="form-group row">
-              <div className="col-sm-10">
+              <Field model="user.title" className="col-sm-10">
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
-                  name="title"
                   placeholder="Title"
-                  value={this.state.title}
-                  onChange={this.onChange}
+                  value={this.props.user.title}
                 />
-              </div>
+              </Field>
             </div>
             <div className="form-group row">
-              <div className="col-sm-10">
+            <Field model="user.description" className="col-sm-10">
                 <textarea
                   className="form-control rounded border border-secondary"
                   rows="3"
                   name="description"
                   placeholder="Description"
-                  value={this.state.description}
-                  onChange={this.onChange}
+                  value={this.props.user.description}
                 />
-              </div>
+            </Field>
             </div>
             <div className="form-group row">
-              <div className="col-sm-10">
+            <Field model="user.tags" className="col-sm-10">
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
                   name="tags"
                   placeholder="Category/Tags"
-                  value={this.state.tags}
-                  onChange={this.onChange}
+                  value={this.props.user.tags}
                 />
-              </div>
+             </Field>
             </div>
             <div className="form-group row">
-              <div className="col-sm-10">
+            <Field model="user.author" className="col-sm-10">
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
                   name="author"
                   placeholder="Author"
-                  value={this.state.author}
-                  onChange={this.onChange}
+                  value={this.props.user.author}
                 />
-              </div>
+              </Field>
             </div>
             <div className="form-group row">
-              <div className="col-sm-10">
+            <Field model="user.image" className="col-sm-10">
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
                   name="image"
                   placeholder="Image URL Only"
-                  value={this.state.image}
-                  onChange={this.onChange}
+                  value={this.props.user.image}
                 />
-              </div>
+            </Field>
             </div>
-            <input
+            <button
               type="submit"
-              value="PUBLISH"
               className="btn btn-info col-sm-10 text-center"
-            />
-          </form>
+            >SUBMIT
+            </button>
+          </Form>
         </div>
         {/* <FooterComponent/>  */}
       </div>
@@ -133,7 +117,10 @@ CreateComponent.propTypes = {
   createPost: PropTypes.func.isRequired,
   createdPost: PropTypes.func.isRequired
 };
+function mapStateToProps(state) {
+  return { user: state.user };
+}
 export default connect(
-  null,
+  mapStateToProps,
   { createPost, createdPost }
 )(CreateComponent);

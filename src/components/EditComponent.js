@@ -47,8 +47,8 @@ class EditComponent extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    // console.log("onsubmit is called");
-    // console.log("changed values are", this.state);
+    console.log("onsubmit is called");
+    console.log("changed values are", this.state);
     this.editBlog(
       this.state.title,
       this.state.author,
@@ -70,9 +70,13 @@ class EditComponent extends Component {
     };
     this.props.editPost(editBlog);
     // console.log("edit component");
-    axios.get('http://test.peppersquare.com/api/v1/article')
-    .then(this.props.history.push(`/details/${Number(this.props.match.params.id)}`))
-    
+    axios
+      .get("http://test.peppersquare.com/api/v1/article")
+      .then(
+        this.props.history.push(
+          `/details/${Number(this.props.match.params.id)}`
+        )
+      );
   };
   onFieldChange = e => {
     this.setState({
@@ -89,7 +93,6 @@ class EditComponent extends Component {
           <form onSubmit={this.onSubmit} className="text-center">
             <div className="form-group row">
               <div className="col-sm-10">
-                <label>Title</label>
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
@@ -102,7 +105,6 @@ class EditComponent extends Component {
             </div>
             <div className="form-group row">
               <div className="col-sm-10">
-                <label>Description</label>
                 <textarea
                   className="form-control rounded border border-secondary"
                   rows="3"
@@ -115,7 +117,6 @@ class EditComponent extends Component {
             </div>
             <div className="form-group row">
               <div className="col-sm-10">
-                <label>Category/Tags</label>
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
@@ -128,7 +129,6 @@ class EditComponent extends Component {
             </div>
             <div className="form-group row">
               <div className="col-sm-10">
-                <label>Author</label>
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"
@@ -141,7 +141,6 @@ class EditComponent extends Component {
             </div>
             <div className="form-group row">
               <div className="col-sm-10">
-                <label>Image Url</label>
                 <input
                   type="text"
                   className="form-control rounded border border-secondary"

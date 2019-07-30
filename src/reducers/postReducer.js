@@ -15,19 +15,19 @@ export default function(state = initialState, action) {
         blogs: action.payload
       };
     case CREATE_POST:
-      // console.log("postReducer/create_post is called");
+      console.log("postReducer/create_post is called");
       return {
         ...state,
         blogs: action.payload
       };
     case CREATED_POST:
-      // console.log("postReducer/created_post is called");
+      console.log("postReducer/created_post is called");
       alert("Blog is posted successfully!");
       return {
         ...state
       };
       case  EDIT_POST:
-      // console.log("postReducer/edit_post is called");
+      console.log("postReducer/edit_post is called");
       alert("Blog is edited successfully!");
       return {
         ...state
