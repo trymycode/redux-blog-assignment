@@ -72,6 +72,7 @@ class CreateComponent extends Component {
                   type="text"
                   value={this.props.user.title}
                   placeholder="Title"
+                  alt="Title"
                   className={
                     shouldMarkError("title")
                       ? "form-control rounded error"
@@ -103,8 +104,8 @@ class CreateComponent extends Component {
                   placeholder="Description"
                   value={this.props.user.description}
                   required
-                  maxLength="100"
-                  title="Must be within 100 characters"
+                  maxLength="500"
+                  title="Must be within 500 characters"
                 />
                 {shouldMarkError("description") ? (
                   <div className="alert alert-danger mt-1" role="alert">

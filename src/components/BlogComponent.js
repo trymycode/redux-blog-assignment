@@ -30,7 +30,7 @@ export default class BlogComponent extends React.Component {
       <div className="col-lg-3 col-md-6 col-sm-12">
         <div className="card m-2" style={{ width: "16rem" }}>
           <Link to={"/details/" + this.props.data.id}>
-            <img src={image} className="card-img-top" alt={title} />
+            <img src={image} className="card-img-top" alt="No Image" />
           </Link>
           <div className="card-body">
             <Link to={"/details/" + this.props.data.id}>
@@ -42,7 +42,7 @@ export default class BlogComponent extends React.Component {
               </span>
             ))}
 
-            <p className="card-text">{shortDescription}...</p>
+            <p className="card-text" alt="No Description">{shortDescription}...</p>
             <h6 className="text-muted">
               {author} | {""}
               <small>{new Date(date).toLocaleString()}</small>

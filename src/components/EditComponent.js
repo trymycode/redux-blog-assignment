@@ -115,8 +115,8 @@ class EditComponent extends Component {
                   placeholder="Description"
                   value={this.state.description}
                   onChange={this.onFieldChange}
-                  maxLength="100"
-                  title="Must be within 100 characters"
+                  maxLength="500"
+                  title="Must be within 500 characters"
                   required
                 />
               </div>
