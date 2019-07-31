@@ -84,8 +84,8 @@ class EditComponent extends Component {
     });
   };
   render() {
-    // console.log("props", this.props);
-    // if (this.state.title != null) {
+    
+
     return (
       <div>
         <div className="position">Edit</div>
@@ -100,6 +100,9 @@ class EditComponent extends Component {
                   placeholder="Title"
                   value={this.state.title}
                   onChange={this.onFieldChange}
+                  maxLength="40"
+                  title="Must be within 40 characters"
+                  required
                 />
               </div>
             </div>
@@ -112,6 +115,9 @@ class EditComponent extends Component {
                   placeholder="Description"
                   value={this.state.description}
                   onChange={this.onFieldChange}
+                  maxLength="100"
+                  title="Must be within 100 characters"
+                  required
                 />
               </div>
             </div>
@@ -124,6 +130,9 @@ class EditComponent extends Component {
                   placeholder="Category/Tags"
                   value={this.state.tags}
                   onChange={this.onFieldChange}
+                  maxLength="30"
+                  title="Must be within 40 characters"
+                  required
                 />
               </div>
             </div>
@@ -136,6 +145,9 @@ class EditComponent extends Component {
                   placeholder="Author"
                   value={this.state.author}
                   onChange={this.onFieldChange}
+                  maxLength="30"
+                  title="Must be within 30 characters"
+                  required
                 />
               </div>
             </div>
@@ -148,6 +160,9 @@ class EditComponent extends Component {
                   placeholder="Image URL Only"
                   value={this.state.image}
                   onChange={this.onFieldChange}
+                  maxLength="30"
+                  title="Must be within 30 characters"
+                  required
                 />
               </div>
             </div>
@@ -160,9 +175,6 @@ class EditComponent extends Component {
         </div>
       </div>
     );
-    // } else {
-    //   return <div>Loading...</div>;
-    // }
   }
 }
 EditComponent.propTypes = {
