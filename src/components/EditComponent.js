@@ -63,13 +63,13 @@ class EditComponent extends Component {
       title: title,
       author: author,
       description: description,
-      tags: [tags],
+      tags: tags,
       id: Number(this.props.match.params.id),
       image: image,
       published: published
     };
     this.props.editPost(editBlog);
-    // console.log("edit component");
+    console.log("edit component");
     axios
       .get("http://test.peppersquare.com/api/v1/article")
       .then(
@@ -160,8 +160,7 @@ class EditComponent extends Component {
                   placeholder="Image URL Only"
                   value={this.state.image}
                   onChange={this.onFieldChange}
-                  maxLength="30"
-                  title="Must be within 30 characters"
+                  title="Must be an Image URL"
                   required
                 />
               </div>
