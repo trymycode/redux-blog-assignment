@@ -20,34 +20,40 @@ function PopularComponent(props) {
      descendingBlogs = props.blogs.sort(compare);
     //  console.log("descendingBlogs", descendingBlogs) 
   return (
- 
-    <div>
-       <div className="main-page">
-        <div className="position">Most Popular</div>
-
-        <div className="container">
-        { descendingBlogs!= null?  <div className="blogs">
-            {descendingBlogs.map(blog => (
-              <BlogComponent
-                data={{
-                  id: blog.id,
-                  author: blog.author,
-                  date: blog.created_at,
-                  image: blog.image,
-                  title: blog.title,
-                  likes: blog.likes,
-                  description: blog.description,
-                  tags: blog.tags
-                }}
-                key={blog.id}
-              />
-            ))}
-          </div>: <PageLoader/>}
-         
+      <div>
+         <div className="main-page">
+          <nav class="navbar navbar-light bg-light">
+            
+            <a class="navbar-brand title">Popular Blogs</a>
+            <form class="form-inline title">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+            </form>
+        
+        </nav>
+          <div className="container">
+          { descendingBlogs!= null?  <div className="blogs">
+              {descendingBlogs.map(blog => (
+                <BlogComponent
+                  data={{
+                    id: blog.id,
+                    author: blog.author,
+                    date: blog.created_at,
+                    image: blog.image,
+                    title: blog.title,
+                    likes: blog.likes,
+                    description: blog.description,
+                    tags: blog.tags
+                  }}
+                  key={blog.id}
+                />
+              ))}
+            </div>: <PageLoader/>}
+           
+          </div>
+  
         </div>
-
       </div>
-    </div>
+      
   )
 }
 export default PopularComponent;

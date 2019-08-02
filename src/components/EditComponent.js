@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { editPost } from "../actions/postActions";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-
 class EditComponent extends Component {
   constructor(props) {
     super(props);
@@ -13,8 +12,9 @@ class EditComponent extends Component {
       title: "",
       author: "",
       description: "",
-      tags: [""],
-      image: ""
+      tags: null,
+      image: "",
+      published: true
     };
   }
 
@@ -49,24 +49,31 @@ class EditComponent extends Component {
     e.preventDefault();
     console.log("onsubmit is called");
     console.log("changed values are", this.state);
+    console.log("this.state.tags", this.state.tags);
+    let tags = null;
+    if(Array.isArray(this.state.tags)){
+      tags = this.state.tags
+    }else{
+      tags = this.state.tags.split(",")
+    }
     this.editBlog(
       this.state.title,
       this.state.author,
       this.state.description,
-      this.state.tags,
+      tags,
       this.state.image,
       this.state.published
     );
   };
-  editBlog = (title, author, description, tags, image, published) => {
+  editBlog = (title, author, description, tags, image) => {
     const editBlog = {
-      title: title,
-      author: author,
-      description: description,
-      tags: tags,
+      title,
+      author,
+      description,
+      tags,
       id: Number(this.props.match.params.id),
-      image: image,
-      published: published
+      image,
+      published: true
     };
     this.props.editPost(editBlog);
     console.log("edit component");
@@ -84,9 +91,7 @@ class EditComponent extends Component {
     });
   };
   render() {
-    
-
-    return (
+       return (
       <div>
         <div className="position">Edit</div>
         <div className="container">

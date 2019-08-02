@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import PageLoader from "./PageLoader";
+import "./DetailsComponent.css";
 class DetailsComponent extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ class DetailsComponent extends Component {
           author: "",
           tags: [""],
           likes: 0,
-          published: false,
+          published: true,
           description: "",
           image: "",
           date: "",
@@ -36,8 +37,10 @@ class DetailsComponent extends Component {
   render() {
     console.log(this.state.blogDetails[0]);
     return (
+    <div>
+      <div className="position">Details</div>
       <div>
-        {this.state.blogDetails[0].image != "" || this.state.blogDetails[0].title != ""? (
+        {this.state.blogDetails[0].image !== "" || this.state.blogDetails[0].title !== ""? (
           <div className="container mb-4 row">
             <div className="mr-2">
               {" "}
@@ -95,6 +98,7 @@ class DetailsComponent extends Component {
           </div>
         )}
       </div>
+    </div>
     );
   }
 }

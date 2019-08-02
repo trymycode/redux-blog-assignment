@@ -5,26 +5,58 @@ import PageLoader from "./PageLoader";
 class HomeComponent extends Component {
   constructor(props) {
     super(props);
-}
-sortByDate=()=> {
-    return  [...this.props.blogs].sort((a, b) => {
-    const genreA = new Date(a.created_at).getTime();
-    const genreB = new Date(b.created_at).getTime();
-    let comparison = 0;
-    if (genreA > genreB) {
-      comparison = 1;
-    } else if (genreA < genreB) {
-      comparison = -1;
+    this.state = {
+      filtered: this.props.blogs
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  sortByDate = () => {
+    return [...this.state.filtered].sort((a, b) => {
+      const genreA = new Date(a.created_at).getTime();
+      const genreB = new Date(b.created_at).getTime();
+      let comparison = 0;
+      if (genreA > genreB) {
+        comparison = 1;
+      } else if (genreA < genreB) {
+        comparison = -1;
+      }
+      return comparison * -1;
+    });
+  };
+  // search bar method
+  handleChange(e) {
+    if (e.target.value != "") {
+      let filteredNewArray = this.state.filtered.filter(
+        blog =>
+          blog.title.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
+          blog.author.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 
+      );
+      this.setState({
+        filtered: filteredNewArray
+      });
+    } else {
+      this.setState({
+        filtered: [...this.props.blogs]
+      });
     }
-    return comparison * -1;
-  });
-}
+  }
   render() {
     return (
       <div className="main-page">
-        <div className="position">
-          <h4>Home</h4>
-        </div>
+        <nav className="navbar navbar-light bg-light">
+          <a className="navbar-brand title">Home</a>
+          <form className="form-inline title">
+            <input
+              className="form-control mr-sm-2"
+              type="search"
+              placeholder="Search by title or author name"
+              aria-label="Search"
+              onChange={this.handleChange}
+              style={{width:"300px", textAlign:"center"}}
+            />
+          </form>
+        </nav>
         <div className="container">
           <div className="blogs">
             {this.props.blogs.length !== 0 ? (

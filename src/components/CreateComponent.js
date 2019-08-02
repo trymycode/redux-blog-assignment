@@ -55,7 +55,7 @@ class CreateComponent extends Component {
       return hasError ? shouldShow : false;
     };
 
-    let { user } = this.props;
+    // let { user } = this.props;
     // console.log(this.props.user);
     return (
       <div>
