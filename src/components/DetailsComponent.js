@@ -37,26 +37,23 @@ class DetailsComponent extends Component {
   render() {
     console.log(this.state.blogDetails[0]);
     return (
-    <div>
+    <div className='text-center, m-auto'>
       <div className="position">Details</div>
-      <div>
         {this.state.blogDetails[0].image !== "" || this.state.blogDetails[0].title !== ""? (
-          <div className="container mb-4 row">
-            <div className="mr-2">
-              {" "}
-              <img
-                src={this.state.blogDetails[0].image}
-                className="card-img-top"
-                alt={this.state.blogDetails[0].title}
-                style={{
-                  margin: "1rem",
-                  width: "75vw",
-                  height: "30vh"
-                }}
-              />
-            </div>
-            <div className="container">
-              <div className="card">
+          <div className="container row" style={{marginBottom:'10%'}}>
+         
+            <img
+            src={this.state.blogDetails[0].image}
+            className="card-img-top"
+            alt={this.state.blogDetails[0].title}
+            style={{
+              width: '50vw',
+              height: '50vh',
+              marginLeft: '30%',
+              marginBottom: '1rem'
+            }}
+            />
+              <div className="card" style={{marginLeft: '15%', width: '100%', marginBottom:'10%'}}>
                 <div className="card-body">
                   <h5 className="card-title">
                     {this.state.blogDetails[0].title}
@@ -91,14 +88,12 @@ class DetailsComponent extends Component {
                 </div>
               </div>
             </div>
-          </div>
         ) : (
           <div style={{ backgroundColor: "#333", margin: "auto 50%" }}>
             <PageLoader />
           </div>
         )}
       </div>
-    </div>
     );
   }
 }

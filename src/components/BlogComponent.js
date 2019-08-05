@@ -27,10 +27,10 @@ export default class BlogComponent extends React.Component {
       .toString()
       .substring(0, 50);
     return (
-      <div className="col-lg-3 col-md-6 col-sm-12">
-        <div className="card m-2" style={{ width: "16rem" , height: "30rem"}}>
+      <div className="col-lg-3 col-md-6 col-sm-12 z-1">
+        <div className="card m-2 z-1" style={{ width: "16rem" , height: "30rem"}}>
           <Link to={"/details/" + this.props.data.id}>
-            <img src={image} className="card-img-top" alt="No Image" style={{ width:'100%', height:'10rem'}}/>
+            <img src={image} className="card-img-top z-1" alt="No Image" style={{ width:'100%', height:'10rem'}}/>
           </Link>
           <div className="card-body">
             <Link to={"/details/" + this.props.data.id}>

@@ -18,7 +18,7 @@ function PopularComponent(props) {
       };
       let descendingBlogs  = null;
      descendingBlogs = props.blogs.sort(compare);
-    //  console.log("descendingBlogs", descendingBlogs) 
+     
   return (
       <div>
          <div className="main-page">
@@ -26,7 +26,13 @@ function PopularComponent(props) {
             
             <a class="navbar-brand title">Popular Blogs</a>
             <form class="form-inline title">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+              <input 
+              class="form-control mr-sm-2" 
+              type="search" 
+              placeholder="Search by title or author name"
+              aria-label="Search"
+              // onChange={this.handleChange}
+              style={{width:"300px", textAlign:"center"}}/>
             </form>
         
         </nav>
