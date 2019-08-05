@@ -22,7 +22,7 @@ function PopularComponent(props) {
   return (
       <div>
          <div className="main-page">
-          <nav class="navbar navbar-light bg-light">
+         <nav className="navbar navbar-dark bg-dark text-light topNav">
             
             <a class="navbar-brand title">Popular Blogs</a>
             <form class="form-inline title">

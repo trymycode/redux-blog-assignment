@@ -9,6 +9,7 @@ class HomeComponent extends Component {
       searchText:'',
       filtered: this.props.blogs,
       display:false,
+      inputValue: ''
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -30,51 +31,78 @@ class HomeComponent extends Component {
   };
   // search bar method
   handleChange(e) {
-
-    // console.log("value");
-    if (e.target.value != "") {
+    console.log("e -", e.target.value);
+   if (e.target.value.length > 0) {
       let filteredNewArray = this.state.filtered.filter(
         blog =>
-          blog.title.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 ||
-          blog.author.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 
+          blog.title.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1 ||
+          blog.author.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1 
       );
       this.setState({
+        searchText: e.target.value,
         filtered: filteredNewArray,
         display: true
+
       });
-    } else {
+    }else {
       this.setState({
-        filtered: [...this.props.blogs],
+        searchText:'',
+        filtered: this.props.blogs,
         display: false
       });
     }
   }
-  handleSubmit = (e) =>{
-      e.preventDefault();
-  }
  handleClick = (e) =>{
-  console.log("Title - ", e.target.innerText);
- }
+    let filteredNewArray = this.state.filtered.filter(
+      blog =>
+        blog.title.toLowerCase().indexOf(e.target.innerText.toLowerCase()) !== -1 ||
+        blog.author.toLowerCase().indexOf(e.target.innerText.toLowerCase()) !== -1 
+    );
+    this.setState({
+      searchText: e.target.innerText,
+      filtered: filteredNewArray,
+      display: false
+
+    });
  
+ }
+
   render() {
     return (
       <div className="main-page">
-        <nav className="navbar navbar-light bg-light">
+        <nav className="navbar navbar-dark bg-dark text-light topNav">
           <a className="navbar-brand title">Home</a>
-          <form className="form-inline title" onSubmit={this.handleSubmit}>
             <input
               className="form-control mr-sm-2"
               placeholder="Search by title or author name"
-              type="search" aria-label="Search"
+              value={this.state.searchText}
               onChange={this.handleChange}
-              style={{width:"300px", textAlign:"center"}}
+              style={{width:"300px"}}
             />
-          </form>
         </nav>
         {this.state.display?
            <div>
-             <ul className="list-group" style={{position:'fixed', top:'10%', left:'75%', zIndex:'1000', maxHeight:'300px', overflow:'auto'}}>
-            {this.state.filtered.map(blog=><li className="list-group-item" onClick={this.handleClick} key={blog.id} value={blog.title}>{blog.title}</li>)} 
+             <ul className="list-group" 
+                 style={{
+                   position:'fixed', 
+                   top:'10%',
+                   left:'75%', 
+                   zIndex:'1000', 
+                   maxHeight:'300px', 
+                   overflow:'auto'
+                  }}>
+                    
+            {this.state.filtered.map(blog=>
+
+            <li 
+            className="list-group-item list-group-item-light list-group-item-action" 
+            onClick={this.handleClick} 
+            key={blog.id} 
+            value={blog.title}
+            type="button">
+            {blog.title}
+            </li>
+            )} 
             </ul>
            </div>:null}
        

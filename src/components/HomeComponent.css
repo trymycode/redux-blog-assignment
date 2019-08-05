@@ -1,3 +1,10 @@
+.topNav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
+  margin-bottom: 4rem;
+}
 .blogs {
   display: flex;
   flex-wrap: wrap;
@@ -5,7 +12,8 @@
 }
 
 .main-page {
-  margin-bottom: 5rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .title{
@@ -13,4 +21,8 @@
  margin-left: 3rem;
   font-size: 1.5rem;
   letter-spacing: 2px;
+}
+li .list-group-item:hover{
+  
+  background-color: aliceblue
 }

@@ -3,7 +3,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  
+  .topNav {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+    margin-bottom: 4rem;
+  }
   .main-page {
     margin-bottom: 5rem;
   }
