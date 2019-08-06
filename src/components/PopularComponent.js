@@ -24,7 +24,7 @@ function PopularComponent(props) {
       <div className="main-page">
         <nav className="navbar navbar-dark bg-dark text-light topNav">
           <a className="navbar-brand title">Popular Blogs</a>
-          <form className="form-inline title">
+        
             <input
               className="form-control mr-sm-2"
               type="search"
@@ -33,7 +33,6 @@ function PopularComponent(props) {
               // onChange={this.handleChange}
               style={{ width: "300px", textAlign: "center" }}
             />
-          </form>
         </nav>
         <div className="container">
           {descendingBlogs != null ? (

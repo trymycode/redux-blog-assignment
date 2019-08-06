@@ -13,14 +13,12 @@ class FooterComponent extends Component {
   }
   handleClick = e => {
     if(e.target.getAttribute('value') == 'activeHome'){
-      console.log(e.target.getAttribute('value'))
       this.setState({
         activeHome: ! this.state.activeHome,
         activeCreate: false,
         activePopular: false
       })
     } else if(e.target.getAttribute('value') == 'activeCreate'){
-      console.log(e.target.getAttribute('value'))
       this.setState({
         activeHome: false,
         activeCreate: ! this.state.activeCreate,
@@ -28,7 +26,6 @@ class FooterComponent extends Component {
       })
     }
     else {
-      console.log(e.target.getAttribute('value'))
       this.setState({
         activeHome: false,
         activePopular: ! this.state.activePopular,
