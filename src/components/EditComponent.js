@@ -51,10 +51,10 @@ class EditComponent extends Component {
     console.log("changed values are", this.state);
     console.log("this.state.tags", this.state.tags);
     let tags = null;
-    if(Array.isArray(this.state.tags)){
-      tags = this.state.tags
-    }else{
-      tags = this.state.tags.split(",")
+    if (Array.isArray(this.state.tags)) {
+      tags = this.state.tags;
+    } else {
+      tags = this.state.tags.split(",");
     }
     this.editBlog(
       this.state.title,
@@ -91,7 +91,7 @@ class EditComponent extends Component {
     });
   };
   render() {
-       return (
+    return (
       <div>
         <div className="position">Edit</div>
         <div className="container">
