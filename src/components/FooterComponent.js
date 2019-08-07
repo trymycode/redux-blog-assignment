@@ -12,26 +12,30 @@ class FooterComponent extends Component {
     };
   }
   handleClick = e => {
-    if(e.target.getAttribute('value') == 'activeHome'){
+    if (e.target.getAttribute("value") == "activeHome") {
       this.setState({
-        activeHome: ! this.state.activeHome,
+        activeHome: true,
         activeCreate: false,
         activePopular: false
-      })
-    } else if(e.target.getAttribute('value') == 'activeCreate'){
+      });
+    } else if (e.target.getAttribute("value") == "activeCreate") {
       this.setState({
         activeHome: false,
-        activeCreate: ! this.state.activeCreate,
+        activeCreate:true,
         activePopular: false
-      })
-    }
-    else {
+      });
+    } else if (e.target.getAttribute("value") == "activePopular") {
       this.setState({
         activeHome: false,
-        activePopular: ! this.state.activePopular,
+        activePopular: true,
         activeCreate: false
-        
-      })
+      });
+    } else {
+      this.setState({
+        activeHome: true,
+        activeCreate: false,
+        activePopular: false
+      });
     }
   };
   render() {
