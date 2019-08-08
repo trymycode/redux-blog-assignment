@@ -145,6 +145,7 @@ class HomeComponent extends Component {
           <div className="blogs">
             {currentBlogs.length !== 0 ? (
               <div>
+                <div className="d-flex justify-content-start"><label className="text-secondary"> <i className="fa fa-paperclip"></i>Page:{this.state.setCurrentPage}</label></div>
                 <div className="row">
                   {this.sortByDate(currentBlogs).map(blog => (
                     <BlogComponent
