@@ -92,8 +92,7 @@ class CreateComponent extends Component {
             </div>
             <div className="form-group row">
               <Field model="user.description" className="col-sm-10">
-                <textarea
-                  rows="3"
+                <textarea contenteditable="true"rows="3"
                   className={
                     shouldMarkError("description")
                       ? "form-control rounded error"
@@ -105,8 +104,8 @@ class CreateComponent extends Component {
                   value={this.props.user.description}
                   required
                   maxLength="500"
-                  title="Must be within 500 characters"
-                />
+                  title="Must be within 500 characters"/>
+                
                 {shouldMarkError("description") ? (
                   <div className="alert alert-danger mt-1" role="alert">
                     Please provide a description
