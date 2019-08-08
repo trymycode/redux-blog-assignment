@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./CreateComponent.css";
-import { createPost, createdPost } from "../actions/postActions";
+import { createPost, createdPost } from "../../actions/postActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Field, Form } from "react-redux-form";

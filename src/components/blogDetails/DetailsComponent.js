@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import PageLoader from "./PageLoader";
+import PageLoader from "../pageLoader/PageLoader";
 import "./DetailsComponent.css";
-import  NotFoundComponent  from './NotFoundComponent';
+import  NotFoundComponent  from '../404page/NotFoundComponent';
 class DetailsComponent extends Component {
   constructor(props) {
     super(props);

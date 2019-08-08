@@ -3,14 +3,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import { connect } from "react-redux";
 import { fetchPosts } from "../src/actions/postActions";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import CreateComponent from "./components/CreateComponent";
-import HomeComponent from "./components/HomeComponent";
-import DetailsComponent from "./components/DetailsComponent";
-import PopularComponent from "./components/PopularComponent";
-import EditComponent from "./components/EditComponent";
-import NotFoundComponent from "./components/NotFoundComponent";
+import CreateComponent from "./components/create/CreateComponent";
+import HomeComponent from "./components/home/HomeComponent";
+import DetailsComponent from "./components/blogDetails/DetailsComponent";
+import PopularComponent from "./components/popularBlogs/PopularComponent";
+import EditComponent from "./components/editBlog/EditComponent";
+import NotFoundComponent from "./components/404page/NotFoundComponent";
 
-import FooterComponent from "./components/FooterComponent";
+import FooterComponent from "./components/footer/FooterComponent";
 import PropTypes from "prop-types";
 
 class App extends Component {

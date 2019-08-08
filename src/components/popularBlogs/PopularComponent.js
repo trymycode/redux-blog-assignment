@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import BlogComponent from "./BlogComponent";
+import BlogComponent from "../blogs/BlogComponent";
 import "./PopularComponent.css";
-import PageLoader from "./PageLoader";
+import PageLoader from "../pageLoader/PageLoader";
 
 function PopularComponent(props) {
   const compare = (a, b) => {
@@ -30,7 +30,6 @@ function PopularComponent(props) {
               type="search"
               placeholder="Search by title or author name"
               aria-label="Search"
-              // onChange={this.handleChange}
               style={{ width: "300px", textAlign: "center" }}
             />
         </nav>

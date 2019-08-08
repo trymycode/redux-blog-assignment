@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import BlogComponent from "./BlogComponent";
+import BlogComponent from "../blogs/BlogComponent";
 import "./HomeComponent.css";
-import PageLoader from "./PageLoader";
-import PaginationComponent from "./PaginationComponent";
+import PageLoader from "../pageLoader/PageLoader";
+import PaginationComponent from "../pagination/PaginationComponent";
 class HomeComponent extends Component {
   constructor(props) {
     super(props);
@@ -77,13 +77,13 @@ class HomeComponent extends Component {
 
   // pagination method
   paginate = number => {
-    // console.log("selected page no", number);
     this.setState({
       setCurrentPage: number,
     });
   };
+  // finished pagination 
+  
   render() {
-    // console.log("setCurrentPage", this.state.setCurrentPage);
     // get current post according to the pagination
     const indexOfLastBlog = this.state.setCurrentPage * this.state.BlogPerPage;
     const indexOfFirstBlog = indexOfLastBlog - this.state.BlogPerPage;

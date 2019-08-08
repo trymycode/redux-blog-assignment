@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { editPost } from "../actions/postActions";
+import { editPost } from "../../actions/postActions";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import NotFoundComponent from "./NotFoundComponent";
+import NotFoundComponent from "../404page/NotFoundComponent";
 class EditComponent extends Component {
   constructor(props) {
     super(props);
