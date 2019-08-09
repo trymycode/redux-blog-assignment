@@ -3,6 +3,7 @@ import BlogComponent from "../blogs/BlogComponent";
 import "./HomeComponent.css";
 import PageLoader from "../pageLoader/PageLoader";
 import PaginationComponent from "../pagination/PaginationComponent";
+
 class HomeComponent extends Component {
   constructor(props) {
     super(props);

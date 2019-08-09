@@ -1,88 +1,41 @@
 import React, { Component } from "react";
 import "./FooterComponent.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 class FooterComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeHome: true,
-      activeCreate: false,
-      activePopular: false
-    };
-  }
-  handleClick = e => {
-    if (e.target.getAttribute("value") == "activeHome") {
-      this.setState({
-        activeHome: true,
-        activeCreate: false,
-        activePopular: false
-      });
-    } else if (e.target.getAttribute("value") == "activeCreate") {
-      this.setState({
-        activeHome: false,
-        activeCreate:true,
-        activePopular: false
-      });
-    } else if (e.target.getAttribute("value") == "activePopular") {
-      this.setState({
-        activeHome: false,
-        activePopular: true,
-        activeCreate: false
-      });
-    } else {
-      this.setState({
-        activeHome: true,
-        activeCreate: false,
-        activePopular: false
-      });
-    }
-  };
   render() {
     return (
       <div className="footer d-flex justify-content-around pt-2">
-        <Link to="/">
-          <label
-            className="center ml-1"
-            title="Home Page"
-            onClick={this.handleClick}
-          >
-            <i
-              className={
-                this.state.activeHome
-                  ? "fa fa-2x fa-home text-info"
-                  : "fa fa-2x fa-home text-secondary"
-              }
-              value="activeHome"
-            />
+        <NavLink
+          to="/"
+          exact
+          style={{ color: "#333" }}
+          activeStyle={{ color: "#21b8b5" }}
+        >
+          <label className="center ml-1" title="Home Page">
+            <i className="fa fa-2x fa-home" />
           </label>
-        </Link>
-        <Link to="/popular">
+        </NavLink>
+
+        <NavLink
+          to="/popular"
+          exact
+          style={{ color: "#333" }}
+          activeStyle={{ color: "#db7995" }}
+        >
           <label className="center ml-1 popular" title="Popular Blogs Page">
-            <i
-              className={
-                this.state.activePopular
-                  ? "fa fa-2x fa-heart text-info"
-                  : "fa fa-2x fa-heart text-secondary"
-              }
-              value="activePopular"
-              onClick={this.handleClick}
-            />
+            <i className="fa fa-2x fa-heart" />
           </label>
-        </Link>
-        <Link to="/create">
+        </NavLink>
+        <NavLink
+          to="/create"
+          exact
+          style={{ color: "#333" }}
+          activeStyle={{ color: "#21b8b5" }}
+        >
           <label className="center ml-1" title="Create Blog Page">
-            <i
-              className={
-                this.state.activeCreate
-                  ? "fa fa-2x fa-plus text-info"
-                  : "fa fa-2x fa-plus text-secondary"
-              }
-              value="activeCreate"
-              onClick={this.handleClick}
-            />
+            <i className="fa fa-2x fa-plus" />
           </label>
-        </Link>
+        </NavLink>
       </div>
     );
   }

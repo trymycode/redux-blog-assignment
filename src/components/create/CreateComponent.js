@@ -92,7 +92,7 @@ class CreateComponent extends Component {
             </div>
             <div className="form-group row">
               <Field model="user.description" className="col-sm-10">
-                <textarea contenteditable="true"rows="3"
+                <textarea contentEditable="true"rows="3"
                   className={
                     shouldMarkError("description")
                       ? "form-control rounded error"
